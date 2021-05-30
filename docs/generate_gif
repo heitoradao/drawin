@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# HAJ
+
+require 'optparse'
+
+options = { input: '*.png',
+            output: 'elapsed.gif',
+            delay: 20 }
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+
+  opts.on('-i', '--input-files=INPUT', 'default: *.png') do |input|
+    options[:input] = input
+  end
+
+  opts.on('-o', '--output-file=OUTPUT', 'default: elapsed.gif') do |output|
+    options[:output] = output
+  end
+
+  opts.on('-d', '--delay=DELAY', 'default: 20') do |delay|
+    options[:delay] = delay
+  end
+
+  opts.on('-h', '--help', 'this help') do
+    puts opts
+    exit
+  end
+end
+
+
+option_parser.parse!
+
+command = "convert -delay #{options[:delay]} -loop 0 #{options[:input]} #{options[:output]}"
+
+puts "> #{command}"
+
+`#{command}`
+
