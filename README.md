@@ -11,8 +11,8 @@ It tryies to evolve agents that draw random images, to the point these agents "l
 ### How it works?
 
 * Generates random noises to an empty image.
-* The noise is accepted if it result in an aproximation to an image reference, or discarded otherwise.
-* As a consequence of this selection, the noises tend to copy the image reference without knowing it.
+* The noise is accepted as new matriarch if it is more aproximated to an image reference then current matriarch, or discarded otherwise.
+* As a consequence of this selection, the noises tend to copy the image reference without have direct access to it.
 
 ### Update (2021-11-10)
 
